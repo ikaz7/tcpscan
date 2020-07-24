@@ -17,7 +17,7 @@ var e net.Error
 func main() {
 	flag.Parse()
 	// counting semaphore
-	var tokens = make(chan struct{}, 200)
+	var tokens = make(chan struct{}, *concurrent)
 	var ch = make(chan struct{})
 	start := time.Now()
 	for i := 1; i <= 65535; i++ {
