@@ -28,14 +28,14 @@ func main() {
 			if errors.As(err, &e) {
 				// hanging connection, likely filtered port
 				if e.Timeout() {
-					fmt.Printf("scan: %s timed out ...\n", address)
+					fmt.Printf("tcpscan: %s timed out ...\n", address)
 				}
 				// closed port
 				<-tokens
 				ch <- struct{}{}
 				return
 			}
-			fmt.Printf("scan: %s is open\n", address)
+			fmt.Printf("tcpscan: %s is open\n", address)
 			conn.Close()
 			<-tokens
 			ch <- struct{}{}
