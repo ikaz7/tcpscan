@@ -24,7 +24,7 @@ func main() {
 		go func(p int) {
 			address := fmt.Sprintf("%s:%d", *host, p)
 			tokens <- struct{}{}
-			conn, err := net.DialTimeout("tcp", address, 10*time.Second)
+			conn, err := net.DialTimeout("tcp", address, *timeout)
 			if errors.As(err, &e) {
 				// hanging connection, likely filtered port
 				if e.Timeout() {
